@@ -1,0 +1,61 @@
+<!-- Toggle button to show/hide upload section -->
+<main class="co2-main" *ngIf="!showUploadSection">
+    <h1>Create CO2 Report</h1>
+    <p>Press the button to find out what is your CO2 emission</p>
+    <button class="co2-report-btn"(click)="toggleUploadSection()">Create CO2 Report</button>
+  </main>
+  
+  <!-- Upload Section -->
+  <div *ngIf="showUploadSection" class="upload-section">
+  
+    <!-- Drag & Drop Area -->
+    <div
+      class="drop-zone"
+      [class.drag-over]="dragOver"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onFileDrop($event)"
+    >
+      <p *ngIf="!selectedFile">Drag & drop your PDF file here            </p>
+      <p *ngIf="selectedFile">File selected: {{ selectedFile?.name }}</p>
+  
+      <!-- Fallback input for selecting a file manually -->
+      <input type="file" accept=".pdf" (change)="onFileSelected($event)" />
+    </div>
+  
+    <!-- Button to create the report -->
+    <button class="co2-report-btn"*ngIf="reportCreated" (click)="onCreateReport()">
+      {{ isLoading ? 'Processing...' : 'Create CO2 Report' }}
+    </button>
+  
+    <!-- Error message, if any -->
+    <p class="error" *ngIf="errorMessage">Sorry, we couldn't evaluate your CO2 emission :(</p>
+    <table *ngIf="emission.length > 0">
+        <thead>
+          <tr>
+            <!-- Adjust table columns to match your data structure -->
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Metric kg of CO2 per year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of categories; index as i">
+            <td>{{ categories[i] }}</td>
+            <td>{{ amount[i] }}</td>
+            <td>{{ emission[i] }}</td>
+          </tr>
+          <tr>
+            <td>Total Emission:</td>
+            <td>{{TotalAmount.toFixed(2)}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="reload-btn"*ngIf="reloadBtn" (click)="reload()">
+        Generate another report?
+      </button>
+  </div>
+  
+  <!-- Table Section: show only if we have any data in reportData -->
+  
+  

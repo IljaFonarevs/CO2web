@@ -1,0 +1,101 @@
+/* Simple reset / layout hints */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Push footer to the bottom */
+    justify-content:space-between;
+    padding: 2rem;
+  }
+  .co2-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Push footer to the bottom */
+    justify-content:center;
+    padding: 2rem;
+  }
+  .co2-report-btn {
+    background-color: #d42a2a;
+    color: #fff;
+    font-size: 3vw;
+    padding: 2vw 4vw;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .co2-report-btn:hover {
+    background-color: #b01e1e;
+  }
+  
+  /* Drag-and-drop area */
+  .drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  /* Drag-over highlight */
+  .drop-zone.drag-over {
+    border-color: #66a;
+    background-color: #f0f8ff;
+  }
+  
+  .drop-zone input[type="file"] {
+    display: none; /* Hide the default file input; 
+                      the user can click the zone itself. */
+  }
+  
+  /* Loading state for the Create Report button */
+  button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    margin-top: 0.5rem;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+    background-color: rgba(0, 0, 0, 0.057);
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+  }
+  .reload-btn {
+    background-color: #d42a2a;
+    color: #fff;
+    font-size: 3vw;
+    margin-top: 3vw;
+    padding: 2vw 4vw;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: center;
+  }
+  
+  .reload-btn:hover {
+    background-color: #b01e1e;
+  }
+  
